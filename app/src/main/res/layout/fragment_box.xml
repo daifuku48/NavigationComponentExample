@@ -5,23 +5,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".BoxFragment">
+    tools:context=".BoxFragment"
+    android:id = "@+id/root_fragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text = "@string/this_is_a_box" />
     <Button
+        android:id = "@+id/go_back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text = "@string/go_back"
         android:textAllCaps="true" />
     <Button
+        android:id = "@+id/open_secret_button"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text = "@string/open_secret"
         android:textAllCaps="true" />
     <Button
+        android:id = "@+id/generate_number_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text = "@string/generate_number"
