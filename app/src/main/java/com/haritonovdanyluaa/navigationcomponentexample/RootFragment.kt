@@ -28,8 +28,10 @@ class RootFragment : Fragment(R.layout.activity_main) {
             openBox(Color.GREEN)
         }
 
-        val number = findNavController().currentBackStackEntry?.savedStateHandle?.get<Int>("Random")
-        Toast.makeText(requireContext(), number.toString(), Toast.LENGTH_LONG).show()
+        parentFragmentManager.setFragmentResultListener(BoxFragment.REQUEST_CODE, viewLifecycleOwner) { _, data ->
+            val number = data.getInt(BoxFragment.EXTRA_REQUEST_CODE)
+            Toast.makeText(requireContext(),number.toString(), Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun openBox(color: Int)

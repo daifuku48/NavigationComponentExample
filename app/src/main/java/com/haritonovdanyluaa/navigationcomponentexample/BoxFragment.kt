@@ -3,6 +3,7 @@ package com.haritonovdanyluaa.navigationcomponentexample
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.haritonovdanyluaa.navigationcomponentexample.databinding.FragmentBoxBinding
@@ -29,7 +30,8 @@ class BoxFragment : Fragment(R.layout.fragment_box) {
         }
         binding?.generateNumberButton?.setOnClickListener {
             val number = Random.nextInt(0, 1000)
-            findNavController().previousBackStackEntry?.savedStateHandle?.set("random", number)
+            parentFragmentManager.setFragmentResult(REQUEST_CODE, bundleOf(EXTRA_REQUEST_CODE to number))
+            findNavController().popBackStack()
         }
     }
 
@@ -40,5 +42,7 @@ class BoxFragment : Fragment(R.layout.fragment_box) {
 
     companion object{
         const val COLOR = "color"
+        const val REQUEST_CODE = "REQUEST_CODE"
+        const val EXTRA_REQUEST_CODE = "EXTRA_REQUEST_CODE"
     }
 }
