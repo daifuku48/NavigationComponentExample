@@ -5,16 +5,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".RootFragment">
+    tools:context="com.haritonovdanyluaa.navigationcomponentexample.RootFragment">
 
     <Button
-        android:id = "@+id/green_button"
+        android:id = "@+id/greenButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text = "@string/green_box"
         android:backgroundTint="#99A98F" />
+
     <Button
-        android:id = "@+id/yellow_button"
+        android:id = "@+id/yellowButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text = "@string/yellow_box"

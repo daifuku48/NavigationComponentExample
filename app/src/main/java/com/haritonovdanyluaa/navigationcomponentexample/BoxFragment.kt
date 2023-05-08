@@ -2,7 +2,9 @@ package com.haritonovdanyluaa.navigationcomponentexample
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -16,9 +18,18 @@ class BoxFragment : Fragment(R.layout.fragment_box) {
     private val binding
         get() = _binding
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentBoxBinding.inflate(inflater, container, false)
+        return binding?.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentBoxBinding.bind(view)
+
         val color = requireArguments().getInt(COLOR)
         binding?.root?.setBackgroundColor(color)
 
