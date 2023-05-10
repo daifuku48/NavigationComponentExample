@@ -24,11 +24,11 @@ class RootFragment : Fragment(R.layout.activity_main) {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.greenButton?.setOnClickListener {
-            openBox(Color.GREEN)
+            openBox(Color.GREEN, getString(R.string.green))
         }
 
         binding?.yellowButton?.setOnClickListener {
-            openBox(Color.YELLOW)
+            openBox(Color.YELLOW, getString(R.string.yellow))
         }
 
         parentFragmentManager.setFragmentResultListener(BoxFragment.REQUEST_CODE, viewLifecycleOwner) { _, data ->
@@ -46,8 +46,8 @@ class RootFragment : Fragment(R.layout.activity_main) {
         return binding?.root
     }
 
-    private fun openBox(color: Int)
+    private fun openBox(color: Int, colorName: String)
     {
-        findNavController().navigate(R.id.action_rootFragment2_to_boxFragment, bundleOf(BoxFragment.COLOR to color))
+        findNavController().navigate(R.id.action_rootFragment2_to_boxFragment, bundleOf(BoxFragment.COLOR_ARG to color, BoxFragment.COLOR_NAME to colorName))
     }
 }

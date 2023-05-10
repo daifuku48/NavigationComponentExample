@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/rootFragment2"
         android:name="com.haritonovdanyluaa.navigationcomponentexample.RootFragment"
-        android:label="fragment_main"
+        android:label="Root"
         tools:layout="@layout/fragment_main" >
         <action
             app:exitAnim="@anim/from_left"
@@ -19,17 +19,20 @@
     <fragment
         android:id="@+id/boxFragment"
         android:name="com.haritonovdanyluaa.navigationcomponentexample.BoxFragment"
-        android:label="fragment_box"
+        android:label="{color_name} Box"
         tools:layout="@layout/fragment_box" >
         <action
             android:id="@+id/action_boxFragment_to_secretFragment"
             app:destination="@id/secretFragment" />
+        <argument
+            android:name="color_name"
+            app:argType="string"/>
     </fragment>
 
     <fragment
         android:id="@+id/secretFragment"
         android:name="com.haritonovdanyluaa.navigationcomponentexample.SecretFragment"
-        android:label="fragment_secret"
+        android:label="Secret"
         tools:layout="@layout/fragment_secret" />
 
 </navigation>

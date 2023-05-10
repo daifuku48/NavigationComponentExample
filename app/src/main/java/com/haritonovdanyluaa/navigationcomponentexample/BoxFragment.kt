@@ -30,7 +30,7 @@ class BoxFragment : Fragment(R.layout.fragment_box) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val color = requireArguments().getInt(COLOR)
+        val color = requireArguments().getInt(COLOR_ARG)
         binding?.root?.setBackgroundColor(color)
 
         binding?.goBackButton?.setOnClickListener {
@@ -52,7 +52,8 @@ class BoxFragment : Fragment(R.layout.fragment_box) {
     }
 
     companion object{
-        const val COLOR = "color"
+        const val COLOR_ARG = "color"
+        const val COLOR_NAME = "color_name"
         const val REQUEST_CODE = "REQUEST_CODE"
         const val EXTRA_REQUEST_CODE = "EXTRA_REQUEST_CODE"
     }

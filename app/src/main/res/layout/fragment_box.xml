@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".BoxFragment"
+    
     android:id = "@+id/root_fragment">
 
     <TextView

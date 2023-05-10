@@ -9,4 +9,6 @@
     <string name="close_secret">Close Secret</string>
     <string name="green_box">Green Box</string>
     <string name="yellow_box">Yellow Box</string>
+    <string name="green">Green</string>
+    <string name="yellow">Yellow</string>
 </resources>

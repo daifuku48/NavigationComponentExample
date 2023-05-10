@@ -20,6 +20,6 @@
         android:layout_height="wrap_content"
         android:text = "@string/yellow_box"
         android:textColor="@color/black"
-        android:backgroundTint="#FFD95A" />
+        android:backgroundTint="@color/ffd95a" />
 
 </LinearLayout>
