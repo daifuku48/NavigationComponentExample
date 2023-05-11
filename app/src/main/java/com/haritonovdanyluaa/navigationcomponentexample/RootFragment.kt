@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.haritonovdanyluaa.navigationcomponentexample.databinding.FragmentMainBinding
 import com.haritonovdanyluaa.navigationcomponentexample.databinding.FragmentSecretBinding
@@ -31,10 +32,20 @@ class RootFragment : Fragment(R.layout.activity_main) {
             openBox(Color.YELLOW, getString(R.string.yellow))
         }
 
-        parentFragmentManager.setFragmentResultListener(BoxFragment.REQUEST_CODE, viewLifecycleOwner) { _, data ->
-            val number = data.getInt(BoxFragment.EXTRA_REQUEST_CODE)
-            Toast.makeText(requireContext(),number.toString(), Toast.LENGTH_LONG).show()
+        val liveData = findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Int>(BoxFragment.REQUEST_CODE)
+
+        liveData?.observe(viewLifecycleOwner){
+            if (it != null)
+            {
+                Toast.makeText(
+                    requireContext(),
+                    it.toString(),
+                    Toast.LENGTH_LONG
+                ).show()
+                liveData.value = null
+            }
         }
+
     }
 
     override fun onCreateView(
@@ -48,6 +59,7 @@ class RootFragment : Fragment(R.layout.activity_main) {
 
     private fun openBox(color: Int, colorName: String)
     {
-        findNavController().navigate(R.id.action_rootFragment2_to_boxFragment, bundleOf(BoxFragment.COLOR_ARG to color, BoxFragment.COLOR_NAME to colorName))
+        val direction = RootFragmentDirections.actionRootFragment2ToBoxFragment(color = color,colorName = colorName)
+        findNavController().navigate(direction)
     }
 }

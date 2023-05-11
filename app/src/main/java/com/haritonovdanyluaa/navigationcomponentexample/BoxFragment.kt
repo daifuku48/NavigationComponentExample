@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.haritonovdanyluaa.navigationcomponentexample.databinding.FragmentBoxBinding
 import com.haritonovdanyluaa.navigationcomponentexample.databinding.FragmentMainBinding
 import kotlin.random.Random
@@ -18,6 +19,7 @@ class BoxFragment : Fragment(R.layout.fragment_box) {
     private val binding
         get() = _binding
 
+    private val args : BoxFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,18 +32,20 @@ class BoxFragment : Fragment(R.layout.fragment_box) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val color = requireArguments().getInt(COLOR_ARG)
+        val color = args.color
         binding?.root?.setBackgroundColor(color)
 
         binding?.goBackButton?.setOnClickListener {
             findNavController().popBackStack()
         }
         binding?.openSecretButton?.setOnClickListener {
-            findNavController().navigate(R.id.action_boxFragment_to_secretFragment)
+            findNavController().navigate(BoxFragmentDirections.actionBoxFragmentToSecretFragment())
         }
         binding?.generateNumberButton?.setOnClickListener {
             val number = Random.nextInt(0, 1000)
-            parentFragmentManager.setFragmentResult(REQUEST_CODE, bundleOf(EXTRA_REQUEST_CODE to number))
+            //return result to previous fragment
+            findNavController().previousBackStackEntry?.savedStateHandle?.set(REQUEST_CODE, number)
+
             findNavController().popBackStack()
         }
     }
@@ -52,9 +56,6 @@ class BoxFragment : Fragment(R.layout.fragment_box) {
     }
 
     companion object{
-        const val COLOR_ARG = "color"
-        const val COLOR_NAME = "color_name"
         const val REQUEST_CODE = "REQUEST_CODE"
-        const val EXTRA_REQUEST_CODE = "EXTRA_REQUEST_CODE"
     }
 }

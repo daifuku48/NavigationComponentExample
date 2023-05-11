@@ -27,6 +27,8 @@
         <argument
             android:name="color_name"
             app:argType="string"/>
+        <argument app:argType="integer"
+            android:name="color"/>
     </fragment>
 
     <fragment
